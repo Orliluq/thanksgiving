@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "cc9525b9-dd38-4b9b-a63d-f159fc5e3eb6",
+		"name": "Shared Dinners 🍽️",
+		"description": "# **Develop a “Shared Dinners” API!** 🦃\n\n**Details:** Create a RESTful API in Java to host a potluck Thanksgiving dinner. The API should allow users to register which dishes they will carry and see what others are carrying.  \n\nRequirements:  \n1\\. Deploy endpoints to:  \n\\- Register a dish with the user's name.  \n\\- List all registered dishes.  \n\\- Delete or update a dish.  \n2\\. Make sure the information includes the name of the dish, the type of meal (starter, main course, dessert, etc.), and the name of the cook.  \n3\\. Document the API using Swagger or OpenAPI.\n\n<img src=\"https://content.pstmn.io/eaec16a3-573e-4323-9a77-eb5e2ac3c5b9/YXJjaGl0ZWN0dXJlLnBuZw==\" alt=\"Clean%20Architecture\" height=\"269\" width=\"229\">\n\n### **Diagrama de Clases**\n\n<img src=\"https://content.pstmn.io/9c59a849-43eb-4490-b058-65261001cfb2/RGlhZ3JhbWEucG5n\" alt=\"\" height=\"3840\" width=\"3763\">",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28075095",
+		"_collection_link": "https://orli-dun.postman.co/workspace/Thanksgiving~0fdec328-e448-4411-a45a-585a3ef7fab0/collection/28075095-cc9525b9-dd38-4b9b-a63d-f159fc5e3eb6?action=share&source=collection_link&creator=28075095"
+	},
+	"item": [
+		{
+			"name": "Register a dish",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Caesar Salad\",\r\n  \"type\": \"APPETIZER\",\r\n  \"chefName\": \"Chef Gordon\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}dishes?userName=IvyMartinez",
+					"host": [
+						"{{baseUrl}}dishes"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "IvyMartinez"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all dishes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}dishes",
+					"host": [
+						"{{baseUrl}}dishes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upgrade a dish",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Updated Caesar Salad\",\r\n  \"type\": \"APPETIZER\",\r\n  \"chefName\": \"Chef NewName\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}dishes/9?userName=LouisWalker",
+					"host": [
+						"{{baseUrl}}dishes"
+					],
+					"path": [
+						"9"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "LouisWalker"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a dish",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}dishes/9",
+					"host": [
+						"{{baseUrl}}dishes"
+					],
+					"path": [
+						"9"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "admin123",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "Authorization",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
