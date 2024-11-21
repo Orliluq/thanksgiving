@@ -110,8 +110,52 @@ URL: `/api/dishes/{id}`
 Successful answer: 204 No Content
 
 ## 📊 Class diagram
-![Diagrama](https://github.com/user-attachments/assets/81283f3a-8123-4609-9702-16fe02b88956)
+```
+classDiagram
+    class Dish {
+        Long id
+        String name
+        DishType type
+        String chefName
+        String userName
+    }
 
+    class DishType {
+    <<enumeration>>
+        APPETIZER
+        MAIN_COURSE
+        DESSERT
+        BEVERAGE
+    }
+
+    class DishRepository {
+        +save(Dish dish) : Dish
+        +findAll() : List~Dish~
+        +findById(Long id) : Optional~Dish~
+        +deleteById(Long id) : void
+    }
+
+    class DishService {
+        -DishRepository dishRepository
+        +getAllDishes() : List~Dish~
+        +getDishById(Long id) : Optional~Dish~
+        +saveDish(Dish dish) : Dish
+        +deleteDish(Long id) : void
+    }
+
+    class DishController {
+        -DishService dishService
+        +getAllDishes() : ResponseEntity~List~Dish~~
+        +getDishById(Long id) : ResponseEntity~Dish~
+        +createDish(Dish dish) : Dish
+        +updateDish(Long id, Dish dishDetails) : ResponseEntity~Dish~
+        +deleteDish(Long id) : ResponseEntity~void~
+    }
+
+    DishService --> DishRepository
+    DishController --> DishService
+    Dish --> DishType
+```
 ## 📈 Initial setup
 ### Prerequisites
 - Java 21 or higher.
